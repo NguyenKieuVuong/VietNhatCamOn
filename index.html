@@ -263,7 +263,7 @@
           const cleanedTeacherNameInput = teacherName.toLowerCase();
 
           $.ajax({
-            url: "../asset/js/data.json", // Đảm bảo đường dẫn này đúng
+            url: "asset/js/data.json", // Đảm bảo đường dẫn này đúng
             method: "GET",
             dataType: "json",
             success: function (data) {
@@ -428,7 +428,7 @@
       }
 
       // Đường dẫn đến tệp JSON của bạn
-      const jsonFilePath = "js/data.json"; // Đảm bảo đường dẫn này chính xác
+      const jsonFilePath = "asset/js/data.json"; // Đảm bảo đường dẫn này chính xác
 
       // Sử dụng Fetch API để gửi yêu cầu AJAX
       fetch(jsonFilePath)
