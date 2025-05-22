@@ -1,0 +1,458 @@
+﻿@import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,700;0,800;1,700;1,800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&display=swap");
+@import "_globalReset.scss";
+
+body {
+  position: relative;
+  margin: 0 auto !important;
+  max-width: 600px;
+  font-family: "Quicksand", Nunito, Roboto, "Helvetica Neue", Arial;
+}
+
+.mobile body {
+  max-width: 100%;
+}
+
+/*==========================================================================*/
+.page-view {
+  background-image: url(asset/images/bg-camon-page.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  min-height: 100vh;
+  position: relative;
+}
+#img-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: none;
+  img {
+    display: block;
+  }
+}
+.logo {
+  padding-top: 10%;
+  padding-bottom: 10%;
+  margin: auto;
+  text-align: center;
+  img {
+    max-height: 150px;
+  }
+}
+
+.mobile body {
+  max-width: 100%;
+}
+
+.form-insert {
+  width: 85%;
+  margin: auto;
+  .form-group-inline {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    &.--row-1 {
+      .form-control {
+        flex-grow: 1;
+        max-width: 100%;
+        text-transform: capitalize;
+      }
+    }
+    &.--row-2 {
+      .form-group {
+        width: 30%;
+      }
+      .form-control {
+        flex-grow: 1;
+        max-width: 100%;
+      }
+    }
+    margin-bottom: 1.5rem;
+  }
+  .label {
+    font-family: "Playball", "Quicksand", "Nunito", "Roboto", "Helvetica Neue",
+      Arial;
+    font-size: 1.4rem;
+    padding-right: 0.5rem;
+  }
+  select.form-control {
+    width: 100%;
+  }
+  .form-control {
+    // max-width: 20%;
+    font-size: 1.25rem;
+    border-radius: 3rem;
+    text-align: center;
+    padding: 0.25rem;
+    border: 1px solid #000;
+    font-family: "Lobster", "Nunito", "Roboto", "Helvetica Neue", Arial;
+  }
+}
+.box-error {
+  min-height: calc(3vw * 1.5);
+  #txt-error {
+    display: none;
+    font-size: 3vw;
+    text-align: center;
+    color: #ed2042;
+    font-family: "Lobster", "Nunito", "Roboto", "Helvetica Neue", Arial;
+  }
+}
+$color-env: #ffefd9;
+$color-env2: darken($color-env, 3%);
+$color-flap: darken($color-env, 20%);
+$color-bg: lighten($color-env, 48%);
+$color-heart: #d00000;
+
+$env-border-radius: 6px;
+$env-width: 200px;
+$env-height: 120px;
+$heart-width: 30px;
+
+.envlope-wrapper {
+  height: ($env-height + 100px);
+  .reset {
+    text-align: center;
+    button {
+      font-weight: 800;
+      font-style: normal;
+      transition: all 0.1s linear;
+      -webkit-appearance: none;
+      background-color: transparent;
+      border: solid 2px $color-env;
+      border-radius: 4px;
+      color: $color-env;
+      display: inline-block;
+      font-size: 14px;
+      text-transform: uppercase;
+      margin: 5px;
+      padding: 10px;
+      line-height: 1em;
+      text-decoration: none;
+      min-width: 120px;
+      cursor: pointer;
+      &:hover {
+        background-color: $color-env;
+        color: #fff;
+      }
+    }
+  }
+}
+
+#envelope {
+  position: relative;
+  width: $env-width;
+  height: $env-height;
+  border-bottom-left-radius: $env-border-radius;
+  border-bottom-right-radius: $env-border-radius;
+  margin-left: auto;
+  margin-right: auto;
+  top: 80px;
+  background-color: $color-flap;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  .heart-center {
+    width: 30px;
+    height: 30px;
+    background: #ff3838;
+    transform: translate(-50%, -50%) rotate(45deg);
+    animation: heartbeat 1.4s linear infinite;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 5;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0px;
+      left: 0;
+      width: 30px;
+      height: 30px;
+      background: #ff3838;
+      transform: translateY(-50%);
+      border-radius: 50%;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0px;
+      width: 30px;
+      height: 30px;
+      background: #ff3838;
+      transform: translateX(-50%);
+      border-radius: 50%;
+    }
+  }
+  .front {
+    position: absolute;
+    width: 0;
+    height: 0;
+    z-index: 3;
+  }
+  .flap {
+    border-left: ($env-width / 2) solid transparent;
+    border-right: ($env-width / 2) solid transparent;
+    border-bottom: ($env-height / 2) - 8 solid transparent; /* a little smaller */
+    border-top: ($env-height / 2) + 8 solid $color-flap; /* a little larger */
+    transform-origin: top;
+    pointer-events: none;
+  }
+  .pocket {
+    border-left: ($env-width / 2) solid $color-env;
+    border-right: ($env-width / 2) solid $color-env;
+    border-bottom: ($env-height / 2) solid $color-env2;
+    border-top: ($env-height / 2) solid transparent;
+    border-bottom-left-radius: $env-border-radius;
+    border-bottom-right-radius: $env-border-radius;
+  }
+
+  .letter {
+    position: relative;
+    background-color: #fff;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 90%;
+    top: 5%;
+    border-radius: $env-border-radius;
+    box-shadow: 0 2px 26px rgba(0, 0, 0, 0.12);
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-image: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0) 25%,
+        rgba(215, 227, 239, 0.7) 55%,
+        rgba(215, 227, 239, 1) 100%
+      );
+    }
+  }
+
+  .words {
+    position: absolute;
+    left: 10%;
+    width: 80%;
+    height: 14%;
+    background-color: #eeeff0;
+    &.line1 {
+      top: 15%;
+      width: 20%;
+      height: 7%;
+    }
+    &.line2 {
+      text-align: center;
+      top: 30%;
+    }
+    &.line3 {
+      top: 50%;
+    }
+    &.line4 {
+      top: 70%;
+    }
+  }
+
+  &.open {
+    .flap {
+      transform: rotateX(180deg);
+      transition: transform 0.4s ease, z-index 0.6s;
+      z-index: 1;
+    }
+    .letter {
+      //transform: translateY(-($env-height / 2));
+      transform: translateY(-($env-height / 2));
+      transition: transform 0.4s 0.6s ease, z-index 0.6s;
+      z-index: 2;
+    }
+  }
+
+  &.close {
+    .flap {
+      transform: rotateX(0deg);
+      transition: transform 0.4s 0.6s ease, z-index 1s;
+      z-index: 5;
+    }
+    .letter {
+      transform: translateY(0px);
+      transition: transform 0.4s ease, z-index 1s;
+      z-index: 1;
+    }
+    .heart {
+      opacity: 0;
+      animation: none;
+    }
+  }
+
+  .hearts {
+    position: absolute;
+    top: ($env-height / 2);
+    left: 0;
+    right: 0;
+    z-index: 2;
+  }
+  .a1 {
+    left: 20%;
+    -webkit-transform: scale(0.6);
+    -moz-transform: scale(0.6);
+    transform: scale(0.6);
+    opacity: 1;
+    -webkit-animation: slideUp 4s linear 1, sideSway 2s ease-in-out 4 alternate;
+    -moz-animation: slideUp 4s linear 1, sideSway 2s ease-in-out 4 alternate;
+    animation-fill-mode: forwards;
+    animation-delay: 0.7s;
+  }
+  .a2 {
+    left: 55%;
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+    -webkit-animation: slideUp 5s linear 1, sideSway 4s ease-in-out 2 alternate;
+    -moz-animation: slideUp 5s linear 1, sideSway 4s ease-in-out 2 alternate;
+    animation-fill-mode: forwards;
+    animation-delay: 0.7s;
+  }
+  .a3 {
+    left: 10%;
+    -webkit-transform: scale(0.8);
+    -moz-transform: scale(0.8);
+    transform: scale(0.8);
+    opacity: 1;
+    -webkit-animation: slideUp 7s linear 1, sideSway 2s ease-in-out 6 alternate;
+    -moz-animation: slideUp 7s linear 1, sideSway 2s ease-in-out 6 alternate;
+    animation-fill-mode: forwards;
+    animation-delay: 0.7s;
+  }
+  .heart {
+    position: absolute;
+    bottom: 0;
+    right: 10%;
+    pointer-events: none;
+    &:before,
+    &:after {
+      position: absolute;
+      content: "";
+      left: $heart-width;
+      top: 0;
+      width: $heart-width;
+      height: ($heart-width * 1.6);
+      background: $color-heart;
+      border-radius: $heart-width $heart-width 0 0;
+      transform: rotate(-45deg);
+      transform-origin: 0 100%;
+      pointer-events: none;
+    }
+    &:after {
+      left: 0;
+      transform: rotate(45deg);
+      transform-origin: 100% 100%;
+    }
+  }
+}
+@keyframes heartbeat {
+  0% {
+    transform: translate(-50%, -50%) rotate(45deg) scale(1);
+  }
+  25% {
+    transform: translate(-50%, -50%) rotate(45deg) scale(1);
+  }
+  30% {
+    transform: translate(-50%, -50%) rotate(45deg) scale(1.2);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(45deg) scale(1.4);
+  }
+  70% {
+    transform: translate(-50%, -50%) rotate(45deg) scale(1.2);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(45deg) scale(1);
+  }
+}
+@-webkit-keyframes slideUp {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: -1000px;
+  }
+}
+@keyframes slideUp {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: -1000px;
+  }
+}
+@-webkit-keyframes sideSway {
+  0% {
+    margin-left: 0px;
+  }
+  100% {
+    margin-left: 50px;
+  }
+}
+@keyframes sideSway {
+  0% {
+    margin-left: 0px;
+  }
+  100% {
+    margin-left: 50px;
+  }
+}
+#content-2 {
+  width: 80%;
+  margin: auto;
+  .txt-1 {
+    text-align: center;
+    font-size: clamp(2rem, 12vw, 3.875rem);
+    line-height: 2;
+
+    color: #ff5757;
+    font-family: "Coiny", Nunito, Roboto, "Helvetica Neue", Arial;
+  }
+  .txt-2 {
+    text-align: center;
+    font-size: clamp(1rem, 3.5vw, 1.5rem);
+    font-weight: 400;
+    color: #725757;
+    font-family: "Agbalumo", Nunito, Roboto, "Helvetica Neue", Arial;
+    span {
+      color: #800505;
+    }
+  }
+  .txt-date {
+    background-color: #ffb0b0;
+    border-radius: 1rem;
+    padding: 1.25rem 0.5rem;
+    text-align: center;
+    margin: 3rem auto;
+    font-size: clamp(1.75rem, 7vw, 2.5rem);
+    font-family: "Paytone One", Nunito, Roboto, "Helvetica Neue", Arial;
+    span {
+      color: #a3172e;
+      font-size: clamp(2rem, 10vw, 3.75rem);
+    }
+  }
+  .txt-3 {
+    text-align: center;
+    font-size: clamp(1rem, 2.75vw, 1.5rem);
+    font-family: "Agbalumo", Nunito, Roboto, "Helvetica Neue", Arial;
+  }
+}
+@media (min-width: 768px) {
+}
+
+@media (min-width: 992px) {
+}
+
+@media (min-width: 1200px) {
+}
