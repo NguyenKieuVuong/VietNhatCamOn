@@ -129,6 +129,7 @@ body {
   bottom: 0;
   left: 0;
   display: none;
+  z-index: 1;
 }
 #img-bottom img {
   display: block;
@@ -560,6 +561,8 @@ body {
 #content-2 {
   width: 80%;
   margin: auto;
+  position: relative;
+  z-index: 2;
 }
 #content-2 .txt-1 {
   text-align: center;

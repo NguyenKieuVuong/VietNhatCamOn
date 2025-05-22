@@ -28,6 +28,7 @@ body {
   bottom: 0;
   left: 0;
   display: none;
+  z-index: 1;
   img {
     display: block;
   }
@@ -411,6 +412,8 @@ $heart-width: 30px;
 #content-2 {
   width: 80%;
   margin: auto;
+  position: relative;
+  z-index: 2;
   .txt-1 {
     text-align: center;
     font-size: clamp(2rem, 12vw, 3.875rem);
