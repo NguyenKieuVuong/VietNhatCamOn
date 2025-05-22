@@ -274,8 +274,8 @@
 
               // Bước 1: Lọc theo tên từ data.json
               nameMatches = data.filter((item) => {
-                const cleanedTeacherNameJson = item["Họ và tên"]
-                  ? item["Họ và tên"].trim().toLowerCase()
+                const cleanedTeacherNameJson = item["fullname"]
+                  ? item["fullname"].trim().toLowerCase()
                   : "";
                 return cleanedTeacherNameJson === cleanedTeacherNameInput;
               });
@@ -289,10 +289,10 @@
               } else if (nameMatches.length === 1) {
                 // Chỉ có 1 kết quả khớp theo tên, không cần kiểm tra ngày sinh
                 const foundDataItem = nameMatches[0];
-                $("#name").text(foundDataItem["Họ và tên"]);
-                $("#sex").text(foundDataItem["Chức Danh"]);
-                $("#year").text(foundDataItem["Năm"]);
-                $("#month").text(foundDataItem["Tháng"]);
+                $("#name").text(foundDataItem["fullname"]);
+                $("#sex").text(foundDataItem["chucdanh"]);
+                $("#year").text(foundDataItem["nam"]);
+                $("#month").text(foundDataItem["thang"]);
 
                 open(); // Chạy hiệu ứng
               } else {
@@ -366,10 +366,10 @@
                 if (finalMatches.length === 1) {
                   // Tìm thấy 1 kết quả duy nhất sau khi lọc bằng ngày sinh
                   const foundDataItem = finalMatches[0];
-                  $("#name").text(foundDataItem["Họ và tên"]);
-                  $("#sex").text(foundDataItem["Chức Danh"]);
-                  $("#year").text(foundDataItem["Năm"]);
-                  $("#month").text(foundDataItem["Tháng"]);
+                  $("#name").text(foundDataItem["fullname"]);
+                  $("#sex").text(foundDataItem["chucdanh"]);
+                  $("#year").text(foundDataItem["nam"]);
+                  $("#month").text(foundDataItem["thang"]);
                   open(); // Chạy hiệu ứng
                 } else {
                   // 0 hoặc nhiều hơn 1 kết quả sau khi lọc bằng ngày sinh
@@ -404,7 +404,7 @@
 
         // Nhóm các đối tượng theo "Họ và tên" và đếm số lần xuất hiện
         data.forEach((item) => {
-          const name = item["Họ và tên"];
+          const name = item["fullname"];
           if (name) {
             if (!nameOccurrences[name]) {
               nameOccurrences[name] = [];
