@@ -186,6 +186,13 @@
         <img src="asset/images/bg-camon-bottom.png" alt="" />
       </div>
     </div>
+    <audio
+      id="myAudio"
+      src="asset/mp3/sound-camon.mp3"
+      hidden="hidden"
+      preload="auto"
+      loop
+    ></audio>
     <script>
       var envelope = $("#envelope");
       var btn_open = $("#open");
@@ -206,6 +213,8 @@
 
         // Chờ 3 giây (3000ms) sau đó mới gọi hàm display()
         setTimeout(function () {
+          audioPlay = document.getElementById("myAudio");
+          audioPlay.play();
           // Sử dụng hàm ẩn danh để đảm bảo display được gọi sau độ trễ
           display();
         }, 3000); // Đã chỉnh thời gian trễ thành 3000ms (3 giây)
