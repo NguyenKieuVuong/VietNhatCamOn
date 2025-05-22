@@ -87,6 +87,16 @@
         window.check_viewport_timer = setTimeout(window.check_viewport, 200);
       });
     </script>
+    <style>
+      .page-view {
+        background-image: url(asset/images/bg-camon-page.jpg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        min-height: 100vh;
+        position: relative;
+      }
+    </style>
   </head>
   <body>
     <div class="page-view">
@@ -173,7 +183,7 @@
         <button id="reset">Reset</button>
       </div>
       <div id="img-bottom">
-        <img  src="asset/images/bg-camon-bottom.png" alt="" />
+        <img src="asset/images/bg-camon-bottom.png" alt="" />
       </div>
     </div>
     <script>
@@ -243,7 +253,7 @@
           // Ẩn #txt-error và đặt lại nội dung mặc định của lỗi khi bắt đầu tìm kiếm mới
           $("#txt-error").hide();
           $("#txt-error").text("Thầy/cô vui lòng kiểm tra lại thông tin");
-          
+
           // 1. Kiểm tra #teacherName rỗng/null
           if (!teacherName) {
             $("#txt-error").text("Vui lòng nhập Họ và tên thầy cô.").show();
@@ -253,7 +263,7 @@
           const cleanedTeacherNameInput = teacherName.toLowerCase();
 
           $.ajax({
-            url: "asset/js/data.json", // Đảm bảo đường dẫn này đúng
+            url: "../asset/js/data.json", // Đảm bảo đường dẫn này đúng
             method: "GET",
             dataType: "json",
             success: function (data) {
@@ -275,7 +285,7 @@
                 $("#txt-error")
                   .text("Thầy/cô vui lòng kiểm tra lại thông tin.")
                   .show();
-                  console.log("không có kết quả nào.");
+                console.log("không có kết quả nào.");
               } else if (nameMatches.length === 1) {
                 // Chỉ có 1 kết quả khớp theo tên, không cần kiểm tra ngày sinh
                 const foundDataItem = nameMatches[0];
@@ -366,7 +376,9 @@
                   $("#txt-error")
                     .text("Thầy/cô vui lòng kiểm tra lại thông tin.")
                     .show();
-                    console.log("0 hoặc nhiều hơn 1 kết quả sau khi lọc bằng ngày sinh");
+                  console.log(
+                    "0 hoặc nhiều hơn 1 kết quả sau khi lọc bằng ngày sinh"
+                  );
                   // alert(
                   //   "Vẫn còn nhiều hơn một kết quả hoặc không tìm thấy sau khi lọc theo ngày sinh. Vui lòng kiểm tra lại thông tin."
                   // );
